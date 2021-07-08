@@ -5,7 +5,6 @@ const methodOverride = require('method-override');
 const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
-const database = process.env.MONGODB_URI;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
@@ -14,6 +13,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Mongoose connection to MongoDB
+const database = process.env.MONGODB_URI;
 const mongoose = require('mongoose');
 mongoose.connect(database, {
   useNewUrlParser: true,
