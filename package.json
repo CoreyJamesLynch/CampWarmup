@@ -1,0 +1,25 @@
+{
+  "name": "yelpcampwarmup",
+  "version": "1.0.0",
+  "description": "Basic Fullstack Warmup",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoreyJamesLynch/CampWarmup.git"
+  },
+  "author": "Corey Lynch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoreyJamesLynch/CampWarmup/issues"
+  },
+  "homepage": "https://github.com/CoreyJamesLynch/CampWarmup#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.13.2"
+  }
+}
