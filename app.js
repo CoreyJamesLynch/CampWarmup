@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
+const Campground = require('./models/campground');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
@@ -24,6 +25,11 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   console.log(`Connected to ${database}`);
+});
+
+app.get('/campgrounds', async (req, res) => {
+  const campgrounds = await Campground.find({});
+  res.render('campgrounds/index', { campgrounds });
 });
 
 app.get('/', function (req, res) {

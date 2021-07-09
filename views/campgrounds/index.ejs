@@ -1,1 +1,17 @@
-<!-- view all campgrounds -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campgrounds</title>
+  </head>
+  <body>
+    <h1>Select Your Campground!</h1>
+    <% for(campground of campgrounds){%>
+      <p><b> Campground: <%= campground.title %> </b></p>
+      <p>Location: <%= campground.location %> 
+      <hr>
+    <% }%></p>
+    
+  </body>
+</html>
