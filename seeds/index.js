@@ -20,11 +20,20 @@ db.once('open', () => {
 
 const seedDb = async () => {
   await Campground.deleteMany({});
-  const campground = new Campground({
-    title: 'Campground 1',
-    location: 'Somewhere',
-  });
-  await campground.save();
+  for (let idx = 0; idx < 50; idx += 1) {
+    const city = cities[Math.floor(Math.random() * cities.length)].city;
+    const state = cities[Math.floor(Math.random() * cities.length)].state;
+    const descriptor =
+      descriptors[Math.floor(Math.random() * descriptors.length)];
+    const place = places[Math.floor(Math.random() * places.length)];
+
+    const campground = new Campground({
+      title: `${descriptor} ${place}`,
+      location: `${city}, ${state}`,
+    });
+
+    await campground.save();
+  }
 };
 
 seedDb();
