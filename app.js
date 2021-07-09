@@ -27,6 +27,23 @@ db.once('open', function () {
   console.log(`Connected to ${database}`);
 });
 
+app.get('/campgrounds/new', (req, res) => {
+  res.render('campgrounds/new');
+});
+
+app.put('/campgrounds', (req, res) => {
+  const campground = new Campground({
+    title: req.body.title,
+    location: req.body.location,
+  });
+  campground.save((err) => {
+    if (err) {
+      res.send(err);
+    }
+    res.redirect('/campgrounds');
+  });
+});
+
 app.get('/campgrounds', async (req, res) => {
   const campgrounds = await Campground.find({});
   res.render('campgrounds/index', { campgrounds });

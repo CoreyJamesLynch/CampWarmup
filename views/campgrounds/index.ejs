@@ -7,11 +7,17 @@
   </head>
   <body>
     <h1>Select Your Campground!</h1>
+
+    <form action="/campgrounds/new" method="GET">
+      <button>Add Campsite</button>
+    </form>
+
     <% for(campground of campgrounds){%>
-      <p><b> Campground: <%= campground.title %> </b></p>
-      <p>Location: <%= campground.location %> 
-      <hr>
-    <% }%></p>
-    
+    <p><b> Campground: <%= campground.title %> </b></p>
+
+    <p>Location: <%= campground.location %></p>
+
+    <hr />
+    <% }%>
   </body>
 </html>
