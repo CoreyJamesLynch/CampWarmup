@@ -27,6 +27,18 @@ db.once('open', function () {
   console.log(`Connected to ${database}`);
 });
 
+app.get('/campgrounds/:id/edit', async (req, res) => {
+  const id = req.params.id;
+  const campground = await Campground.findById(id);
+  res.render('campgrounds/edit', { campground });
+});
+
+app.patch('/campgrounds/:id', async (req, res) => {
+  const id = req.params.id;
+  const campground = await Campground.findByIdAndUpdate(id, req.body);
+  res.redirect(`/campgrounds/${id}`);
+});
+
 app.get('/campgrounds/:id', async (req, res) => {
   const id = req.params.id;
   const campground = await Campground.findById(id);
