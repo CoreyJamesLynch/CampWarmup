@@ -12,7 +12,6 @@ app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Mongoose connection to MongoDB
 const database = process.env.MONGODB_URI;
 const mongoose = require('mongoose');
 mongoose.connect(database, {
@@ -27,9 +26,8 @@ db.once('open', function () {
   console.log(`Connected to ${database}`);
 });
 
-// Express Routes
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  res.render('home');
 });
 
 app.listen(port, function (req, res) {
