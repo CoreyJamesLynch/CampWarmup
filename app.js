@@ -27,6 +27,12 @@ db.once('open', function () {
   console.log(`Connected to ${database}`);
 });
 
+// app.delete('/campgrounds/:id', function (req, res) {...});
+app.delete('/campgrounds/:id', async (req, res) => {
+  const campground = await Campground.findByIdAndRemove(req.params.id);
+  res.redirect('/campgrounds');
+});
+
 app.get('/campgrounds/:id/edit', async (req, res) => {
   const id = req.params.id;
   const campground = await Campground.findById(id);

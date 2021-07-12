@@ -16,5 +16,12 @@
     <form action="/campgrounds/<%= campground._id %>/edit" method="GET">
       <button>Update</button>
     </form>
+
+    <form
+      action="/campgrounds/<%= campground._id %>?_method=DELETE"
+      method="POST"
+    >
+      <button>Remove Campground</button>
+    </form>
   </body>
 </html>
