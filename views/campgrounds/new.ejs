@@ -1,32 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Campground</title>
-  </head>
-  <body>
-    <h1>Add Your Campground</h1>
-    <form action="/campgrounds?_method=PUT" method="POST">
-      <div>
-        <label for="title">Name:</label>
-        <input type="text" name="title" id="title" placeholder="Enter name" />
-      </div>
+<% layout('layouts/boilerplate') -%>
 
-      <div>
-        <label for="location">Location:</label>
-        <input
-          type="text"
-          name="location"
-          id="location"
-          placeholder="Enter location"
-        />
-      </div>
-      <button>Submit</button>
-    </form>
+<h1>Add Your Campground</h1>
+<form action="/campgrounds?_method=PUT" method="POST">
+  <div>
+    <label for="title">Name:</label>
+    <input type="text" name="title" id="title" placeholder="Enter name" />
+  </div>
 
-    <form action="/campgrounds" method="GET">
-      <button>Return</button>
-    </form>
-  </body>
-</html>
+  <div>
+    <label for="location">Location:</label>
+    <input
+      type="text"
+      name="location"
+      id="location"
+      placeholder="Enter location"
+    />
+  </div>
+  <button>Submit</button>
+</form>
+
+<form action="/campgrounds" method="GET">
+  <button>Return</button>
+</form>

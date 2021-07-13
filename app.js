@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const methodOverride = require('method-override');
+const engine = require('ejs-mate');
 const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
@@ -9,6 +10,8 @@ const Campground = require('./models/campground');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+
+app.engine('ejs', engine);
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -27,7 +30,6 @@ db.once('open', function () {
   console.log(`Connected to ${database}`);
 });
 
-// app.delete('/campgrounds/:id', function (req, res) {...});
 app.delete('/campgrounds/:id', async (req, res) => {
   const campground = await Campground.findByIdAndRemove(req.params.id);
   res.redirect('/campgrounds');
