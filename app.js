@@ -30,6 +30,10 @@ db.once('open', function () {
   console.log(`Connected to ${database}`);
 });
 
+app.get('/campgrounds/new', (req, res) => {
+  res.render('campgrounds/new');
+});
+
 app.delete('/campgrounds/:id', async (req, res) => {
   const campground = await Campground.findByIdAndRemove(req.params.id);
   res.redirect('/campgrounds');
@@ -51,10 +55,6 @@ app.get('/campgrounds/:id', async (req, res) => {
   const id = req.params.id;
   const campground = await Campground.findById(id);
   res.render('campgrounds/show', { campground });
-});
-
-app.get('/campgrounds/new', (req, res) => {
-  res.render('campgrounds/new');
 });
 
 app.put('/campgrounds', (req, res) => {
