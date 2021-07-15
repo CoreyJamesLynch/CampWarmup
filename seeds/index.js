@@ -30,10 +30,16 @@ const seedDb = async () => {
     const campground = new Campground({
       title: `${descriptor} ${place}`,
       location: `${city}, ${state}`,
+      image: 'https://source.unsplash.com/collection/483251',
+      description: "Maybe there's a happy little waterfall happening over here",
+      price: Math.floor(Math.random() * 100),
     });
 
     await campground.save();
   }
 };
 
-seedDb();
+seedDb().then(() => {
+  mongoose.connection.close();
+  console.log('Seeding complete!');
+});
