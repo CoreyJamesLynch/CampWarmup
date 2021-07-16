@@ -59,14 +59,19 @@ app.get('/campgrounds/:id', async (req, res) => {
 });
 
 app.put('/campgrounds', (req, res) => {
+  const { title, price, description, location, image } = req.body.campground;
   const campground = new Campground({
-    title: req.body.title,
-    location: req.body.location,
+    title: title,
+    price: price,
+    description: description,
+    location: location,
+    image: image,
   });
   campground.save((err) => {
     if (err) {
       res.send(err);
     }
+    console.log(` New campground is saved as: ${campground}`);
     res.redirect('/campgrounds');
   });
 });
