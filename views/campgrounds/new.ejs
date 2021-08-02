@@ -3,7 +3,23 @@
 <div class="row">
   <h1 class="text-center">Add Your Campground</h1>
   <div class="col-6 offset-3">
-    <form action="/campgrounds?_method=PUT" method="POST">
+    <form
+      action="/campgrounds?_method=PUT"
+      method="POST"
+      novalidate
+      class="needs-validation"
+    >
+      <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">First name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom01"
+          value="Mark"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
       <div class="mb-3">
         <label for="title" class="form-label">Name</label>
         <input
@@ -12,7 +28,9 @@
           id="title"
           placeholder="Enter campground name"
           name="campground[title]"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
       </div>
 
       <div class="mb-3">
@@ -23,6 +41,7 @@
           id="location"
           placeholder="Enter campground location"
           name="campground[location]"
+          required
         />
       </div>
 
@@ -34,6 +53,7 @@
           id="image"
           placeholder="Enter image url"
           name="campground[image]"
+          required
         />
       </div>
 
@@ -45,6 +65,7 @@
           class="form-control"
           placeholder="0.00 / night"
           name="campground[price]"
+          required
         />
       </div>
 
@@ -55,6 +76,7 @@
           type="text"
           id="description"
           name="campground[description]"
+          required
         ></textarea>
       </div>
 
