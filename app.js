@@ -74,7 +74,7 @@ app.get(
   }),
 );
 
-app.put(
+app.post(
   '/campgrounds',
   catchAsync(async (req, res) => {
     const { title, price, description, location, image } = req.body.campground;
