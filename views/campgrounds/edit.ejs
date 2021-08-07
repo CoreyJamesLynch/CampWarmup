@@ -6,6 +6,8 @@
     <form
       action="/campgrounds/<%= campground._id %>?_method=PATCH"
       method="POST"
+      novalidate
+      class="needs-validation"
     >
       <div class="mb-3">
         <label for="title" class="form-label">Name</label>
@@ -16,7 +18,9 @@
           placeholder="Enter campground name"
           name="campground[title]"
           value="<%= campground.title %>"
+          required
         />
+        <div class="invalid-feedback">Please enter campground name</div>
       </div>
 
       <div class="mb-3">
@@ -28,7 +32,9 @@
           placeholder="Enter campground location"
           name="campground[location]"
           value="<%= campground.location %>"
+          required
         />
+        <div class="invalid-feedback">Please enter campground name</div>
       </div>
 
       <div class="mb-3">
@@ -40,19 +46,23 @@
           placeholder="Enter image url"
           name="campground[image]"
           value="<%= campground.image %>"
+          required
         />
+        <div class="invalid-feedback">Please enter campground name</div>
       </div>
 
       <label for="price" class="form-label">Campground price</label>
       <div class="input-group mb-3">
         <span class="input-group-text" id="price">$</span>
         <input
-          type="text"
+          type="number"
           class="form-control"
           placeholder="0.00 / night"
           name="campground[price]"
           value="<%= campground.price %>.00"
+          required
         />
+        <div class="invalid-feedback">Please enter campground name</div>
       </div>
 
       <label for="description" class="form-label">Campground Description</label>
@@ -62,9 +72,12 @@
           type="text"
           id="description"
           name="campground[description]"
+          value=""
+          required
         >
-<%= campground.description %>
-        </textarea>
+<%= campground.description %></textarea
+        >
+        <div class="invalid-feedback">Please enter campground name</div>
       </div>
 
       <button type="submit" class="btn btn-success">Accept Changes</button>
