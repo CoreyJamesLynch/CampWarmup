@@ -76,27 +76,16 @@ app.get(
 
 app.post(
   '/campgrounds',
-  catchAsync(async (req, res) => {
-    const { title, price, description, location, image } = req.body.campground;
-    const campground = new Campground({
-      title: title,
-      price: price,
-      description: description,
-      location: location,
-      image: image,
-    });
-    await campground.save((err) => {
-      if (err) {
-        res.send(err);
-      }
-      res.redirect('/campgrounds');
-    });
+  catchAsync(async (req, res, next) => {
+    const campground = new Campground(req.body.campground);
+    await campground.save();
+    res.redirect(`/campgrounds/${campground._id}`);
   }),
 );
 
 app.get(
   '/campgrounds',
-  catchAsync(async (req, res) => {
+  catchAsync(async (req, res, next) => {
     const campgrounds = await Campground.find({});
     res.render('campgrounds/index', { campgrounds });
   }),
