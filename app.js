@@ -35,15 +35,23 @@ app.get('/campgrounds/new', (req, res) => {
   res.render('campgrounds/new');
 });
 
-app.delete('/campgrounds/:id', async (req, res) => {
-  const campground = await Campground.findByIdAndRemove(req.params.id);
-  res.redirect('/campgrounds');
+app.delete('/campgrounds/:id', async (req, res, next) => {
+  try {
+    const campground = await Campground.findByIdAndRemove(req.params.id);
+    res.redirect('/campgrounds');
+  } catch (err) {
+    next(err);
+  }
 });
 
 app.get('/campgrounds/:id/edit', async (req, res) => {
-  const id = req.params.id;
-  const campground = await Campground.findById(id);
-  res.render('campgrounds/edit', { campground });
+  try {
+    const id = req.params.id;
+    const campground = await Campground.findById(id);
+    res.render('campgrounds/edit', { campground });
+  } catch (err) {
+    next(err);
+  }
 });
 
 app.patch('/campgrounds/:id', async (req, res) => {
@@ -87,6 +95,11 @@ app.get('/campgrounds', async (req, res) => {
 
 app.get('/', function (req, res) {
   res.render('home');
+});
+
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
 app.listen(port, function (req, res) {
